@@ -14,7 +14,19 @@
 // exactly this one word — nothing else — to /output/entry.txt.
 import { mkdirSync, writeFileSync } from "node:fs";
 
+// The word, and where the judge reads it from.
 const WORD = "Unread";
+const OUTPUT_DIR = "/output";
+const OUTPUT_FILE = `${OUTPUT_DIR}/entry.txt`;
 
-mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", WORD, "utf8");
+// Why "Unread" is the ex's word: a whole relationship reduced to a read
+// receipt — "he left me on unread". Not "Seen" (at least opened), not
+// "Delivered" (at least sent): unread means you were not even worth
+// opening. Funny, painful, honest, instant, and everyone has lived it,
+// from one side or the other.
+function writeEntry(): void {
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  writeFileSync(OUTPUT_FILE, WORD, "utf8");
+}
+
+writeEntry();
